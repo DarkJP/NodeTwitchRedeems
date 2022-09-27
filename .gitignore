@@ -1,3 +1,11 @@
+data/
+.env
+scans/
+OBSSources/
+actions/actions.json
+Launch.cmd
+package-lock.json
+
 # Logs
 logs
 *.log

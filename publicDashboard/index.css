@@ -1,0 +1,61 @@
+body {
+    background-color: #0d1117;
+    color: white;
+}
+.title {
+    font-size: 3em;
+}
+.subtitle {
+    font-size: 2em;
+}
+.container {
+    margin: 0 auto;
+}
+.tcenter {
+    text-align: center;
+}
+.card {
+    margin: 10px;
+    text-align: center;
+    max-width: 240px;
+    background-color: #293341;
+}
+.card-title {
+    font-size: 2em;
+}
+.btn {
+    margin-top: 5px;
+    padding: 5px 15px 5px 15px;
+}
+#blur {
+    filter: blur(1.3px);
+}
+#autopromo {
+    font-size: 1.5em;
+}
+svg {
+    margin-bottom: 8px;
+}
+
+table {
+    margin: 0 auto;
+    border:  1px dashed white;
+    background-color: #293341;
+}
+tr, th, td {
+    border:  1px solid white;
+    padding: 5px 10px 5px 10px;
+}
+#div_help, #div_settings, #div_quotes {
+    display: none;
+}
+ul > li {
+    font-size: 1.2em;
+}
+ul > li + p {
+    margin-left: 15px;
+}
+#btn_auth, #btn_ciss {
+    width: 100px;
+    margin-left: 20px;
+}

@@ -1,0 +1,38 @@
+body {
+    background-color: #0d1117;
+    color: white;
+    margin: 5px;
+}
+.title {
+    font-size: 2em;
+}
+.subtitle {
+    font-size: 1.3em;
+}
+img {
+    max-height: 70px;
+}
+table {
+    border:  1px dashed white;
+    background-color: #293341;
+    text-align: left;
+}
+tr, th, td {
+    border:  1px solid white;
+    padding: 5px 10px 5px 10px;
+    max-width: 133px;
+    overflow: hidden;
+}
+.table_container {
+    display: inline-block; margin-right: 5px;
+    text-align: center;
+}
+.bg {
+    padding: 5px;
+}
+.tableUserName {
+    font-weight: bold;
+}
+.totaltd {
+    color: red;
+}

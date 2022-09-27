@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    <link rel="stylesheet" type="text/css" href="./edit.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="navbar-brand" id="btn_dashboard" href="#">Dashboard |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" id="btn_edit" href="#">Edit Redeems |</a>
+                </li>
+                <li class="nav-item">
+                    <a id="btnRL" class="navbar-brand" target="_blank" href="http://localhost:927">Redeems Leaderboard |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" id="btn_settings" href="#">Settings |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" id="btn_help" href="#">Help</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+    <div class="container">
+        <div id="div_dashboard">
+            <div class="row tcenter">
+                <div class="col-sm-12">
+                    <p class="title">NodeTwitchRedeems - Dashboard</p>
+                    <p class="subtitle">Here you can test your OBS redeems.</p>
+                </div>
+                <div id="action_cards" class="row tcenter"></div>
+            </div>
+        </div>
+
+        <div id="div_edit">
+            <div class="row tcenter">
+                <p class="title">Add/edit redeems</p>
+                <button id="btn_add_redeem" class="btn btn-success">Add redeem</button>
+                <button id="btn_save_actions" class="btn btn-primary">Save changes</button>
+                <hr/>
+                <div id="opt_actions"></div>
+            </div>
+        </div>
+
+        <div id="div_settings">
+            <div class="row tcenter">
+                <h1>Settings</h1>
+            </div>
+            <div class="row">
+                <p class="subtitle">Authorize your app</p>
+                <span>You need to allow this application to access your Twitch informations.</span>
+                <button id="btn_auth" class="btn btn-primary">Authorize</button>
+                <span>(Only required once)</span>
+            </div>
+            <hr/>
+        </div>
+
+        <div id="div_help">
+            <div class="row tcenter">
+                <h1>Help</h1>
+                <h3>Here is some insight of the available commands and keywords to use in the actions parameters.</h3>
+            </div>
+            <hr/>
+            <div class="row">
+                <p class="subtitle">Commands</p>
+                <ul>
+                    <li>createAudioSource</li>
+                    <p>Creates a new audio source</p>
+
+                    <li>createColorFilter</li>
+                    <p>Creates a new color adjustment (hue shift) filter</p>
+
+                    <li>createFreezeFilter</li>
+                    <p>Creates a new freeze filter. Requires this plugin: <a target="_blank" href="https://obsproject.com/forum/resources/freeze-filter.950/">OBS Freeze Filter</a></p>
+
+                    <li>createScrollFilter</li>
+                    <p>Creates a new scroll filter</p>
+
+                    <li>deleteFilter</li>
+                    <p>Delete a filter from a source</p>
+
+                    <li>deleteSource</li>
+                    <p>Delete a source from a scene</p>
+
+                    <li>displayFilter</li>
+                    <p>Displays/hide a source filter. Filter has to already exists</p>
+
+                    <li>displaySource</li>
+                    <p>Displays/hide a source</p>
+
+                    <li>saveScreenshot</li>
+                    <p>Saves a screenshot of the specified source</p>
+
+                    <li>setFilterDelay</li>
+                    <p>Sets the time warp scan filter delay. Requires this plugin: <a target="_blank" href="https://obsproject.com/forum/resources/time-warp-scan.1167/">OBS Time Warp Scan</a></p>
+
+                    <li>setFilterRotation</li>
+                    <p>Sets the time warp scan filter rotation. Requires this plugin: <a target="_blank" href="https://obsproject.com/forum/resources/time-warp-scan.1167/">OBS Time Warp Scan</a></p>
+
+                    <li>setSourcePosition</li>
+                    <p>Sets the position of the specified source</p>
+
+                    <li>setSourceScale</li>
+                    <p>Sets the scale of the specified source</p>
+
+                    <li>wait</li>
+                    <p>Waits for x seconds. Specified in ms. (1s = 1000ms)</p>
+                </ul>
+                <hr/>
+
+                <p class="subtitle">Keywords</p>
+                <ul>
+                    <li>'$obsSceneName'</li>
+                    <p>Fetches the name of the current OBS scene at the moment the action is triggered</p>
+
+                    <li>$obsXScale</li>
+                    <p>Fetches the X scale of the specified source. Relevant commands: 'setSourceScale', 'setSourcePosition'</p>
+
+                    <li>$obsYScale</li>
+                    <p>Fetches the Y scale of the specified source. Relevant commands: 'setSourceScale', 'setSourcePosition'</p>
+
+                    <li>$obsXPosition</li>
+                    <p>Fetches the X position of the specified source. Relevant commands: 'setSourcePosition', 'setSourceScale'</p>
+
+                    <li>$obsYPosition</li>
+                    <p>Fetches the Y position of the specified source. Relevant commands: 'setSourcePosition', 'setSourceScale'</p>
+
+                    <li>$obsWidth</li>
+                    <p>Fetches the obs source width. Relevant commands: 'setSourceScale', 'setSourcePosition',</p>
+
+                    <li>$obsHeight</li>
+                    <p>Fetches the obs source height. Relevant commands: 'setSourceScale', 'setSourcePosition'</p>
+
+                    <li>$obsCanvasWidth</li>
+                    <p>Fetches the obs canvas width. Relevant commands: 'setSourcePosition', 'setSourceScale'</p>
+
+                    <li>$obsCanvasHeight</li>
+                    <p>Fetches the obs canvas height. Relevant commands: 'setSourcePosition', 'setSourceScale'</p>
+
+                    <li>$varRandom</li>
+                    <p>Returns a random value following the Javascript <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">Math.random()</a> function</p>
+                </ul>
+                <hr/>
+
+                <p class="subtitle">Tips</p>
+                <ul>
+                    <li>You can use and/or combine Math functions and operators</li>
+                    <p>
+                        Examples:<br/>
+                        Math.floor($varRandom) * 360<br/>
+                        $obsXScale / 2 + 15
+                    </p>
+
+                    <li>X and Y in the 'setSourceScale' and 'setSourcePosition' commands can be blank</li>
+                    <p>It just won't modify anything</p>
+
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        Scenes and sources names are case sensitive
+                    </li>
+                </ul>
+                <hr/>
+            </div>
+        </div>
+
+        <div class="row">
+            <p id="autopromo">Made with love by
+                <a target="_blank" class="link-light" href="https://twitter.com/Dark_JP_Fox">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#3a9def" class="bi bi-twitter" viewBox="0 0 16 16">
+                    <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                    </svg>
+                    Dark_JP_Fox
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="./index.js"></script>
+    <script src="./dashboard.js"></script>
+    <script src="./edit.js"></script>
+    <script src="./save.js"></script>
+
+</body>
+</html>
